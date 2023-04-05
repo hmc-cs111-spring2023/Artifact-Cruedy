@@ -1,0 +1,16 @@
+This code will output:
+
+min = -10; // minimum value
+max = 50; // maximum value
+amp = Math.abs(max-min)/2; // amount to wiggle
+offset = (max+min)/2;
+wiggle(8, a) + offset;
+
+Where wiggle is an expression from extendscript and x and y are the the parameters:
+x: the frequency at which a frame wiggles
+y: the distance that the frame wiggles
+
+So the above expression will move the frame in a range of 100 pixels in any direction
+
+wiggle in range(100):
+    freq = 8
