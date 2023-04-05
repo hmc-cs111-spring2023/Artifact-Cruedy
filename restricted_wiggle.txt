@@ -4,13 +4,18 @@ min = -10; // minimum value
 max = 50; // maximum value
 amp = Math.abs(max-min)/2; // amount to wiggle
 offset = (max+min)/2;
-wiggle(8, a) + offset;
+wiggle(8, amp) + offset;
 
 Where wiggle is an expression from extendscript and x and y are the the parameters:
 x: the frequency at which a frame wiggles
 y: the distance that the frame wiggles
 
-So the above expression will move the frame in a range of 100 pixels in any direction
+The default position of a 2D frame is 360,640 so the expression will make a frame move between the range of 630 to 
+690 vertically and 350 to 410 horizontally.
 
-wiggle in range(100):
-    freq = 8
+If the freq_q is anything besides sec, we can change the frequency by multiplication/division
+
+directions = [x, y] // the frame can wiggle in both the 
+freq_type (sec) // the frame can wiggle a freq number of times per freq_type
+wiggle in range(-10, 50): // the frame can move 50 pixels positively and 10 pixels negatively in all the directions in directions
+    freq = 8 // the frame can wiggle 8 times per freq_type
