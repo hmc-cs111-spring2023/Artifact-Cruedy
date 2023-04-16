@@ -4,9 +4,10 @@ comp = current_comp()
 
 // Create the solid
 // If an attribute of the solid isn't set, default values are set
-layer = solid()
-name(layer) = "My Solid"
-color(layer) = red
-width(layer) = max
-height(layer) = max
-time(layer) = max
+"My Solid" {
+    type = solid
+    color = red
+    width = max
+    height = max
+    time = max
+}

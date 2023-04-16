@@ -27,13 +27,28 @@ def shape_parser(lines):
     else:
         print("Error: Composition must be created first")
     first_line = comp_name + " = " + comp_type
-    print(first_line)
+    script = open("shape.jsx","w")
+    script.write(first_line)
+    
 
-def effect_parser():
+def effect_parser(lines):
+    print(lines)
+    first_line = lines[0]
+    comp_parts = first_line.split(' = ')
+    comp_name = comp_parts[0]
+    comp_type = comp_parts[1]
+    if comp_type == 'current_comp()':
+        comp_type = 'app.project.activeItem'
+    elif 'different_comp' in comp_type:
+        index = comp_type[len(comp_type)-2:-1]
+        comp_type = 'app.project.item(' + str(index) + ')'
+    else:
+        print("Error: Composition must be created first")
+    first_line = comp_name + " = " + comp_type
     
 parser("shape.txt")
 
 
-#script = open('script.jsx', 'w')
+#
 
 
