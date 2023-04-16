@@ -1,0 +1,20 @@
+// Set the composition that we want to work on to comp using the name of the composition as a string
+comp = current_comp()
+
+// Create the solid
+// If an attribute of the solid isn't set, default values are set
+layer = solid()
+name(layer) = "My Solid"
+color(layer) = red
+width(layer) = max
+height(layer) = max
+time(layer) = max
+
+
+Output:
+// Current composition
+var comp = app.project.activeItem;
+
+// Create new solid out of a New layer
+var layer = comp.layers.addSolid([1, 0, 1], "My Solid", comp.width, comp.height, comp.pixelAspect, comp.duration);
+layer.name = "My Solid";

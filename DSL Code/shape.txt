@@ -1,0 +1,12 @@
+SHAPE
+// Set the composition that we want to work on to comp using the name of the composition as a string
+comp = current_comp()
+
+// Create the solid
+// If an attribute of the solid isn't set, default values are set
+layer = solid()
+name(layer) = "My Solid"
+color(layer) = red
+width(layer) = max
+height(layer) = max
+time(layer) = max
