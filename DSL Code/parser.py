@@ -39,7 +39,35 @@ def shape_parser(lines):
     end = lines.index("}")
     attributes = lines[:end]
     name = name.replace("\"", "")
-    
+    # default values
+    type = "solid"
+    color = "black"
+    width = "comp.width"
+    height = "comp.height"
+    unit = "comp.pixelAspect"
+    time = "comp.duration"
+    for a in attributes:
+        sides = a.split("=")
+        sides[0] = sides[0].replace(" ", "")
+        sides[1] = sides[1].replace(" ", "")
+        if sides[0] == 'type':
+            if sides[1] != "solid":
+                type = sides[1]
+        elif sides[0] == 'color' and sides[1] != "black":
+            color = sides[1]
+        elif sides[0] == 'width' and sides[1] != "max":
+            width = sides[1]
+        elif sides[0] == 'height' and sides[1] != "max":
+            height = sides[1]
+        elif sides[0] == 'unit' and sides[1] != "pixel":
+            unit = sides[1]
+        elif sides[0] == 'time' and sides[1] != "max":
+            time = sides[1]
+    # Order: color, name, width, height, unit, 
+    parameters = [color, name, width, height, unit]
+    print(parameters)
+
+
 
 def effect_parser(lines):
     print(lines)

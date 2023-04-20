@@ -7,7 +7,5 @@ comp = current_comp()
 "My Solid" {
     type = solid
     color = red
-    width = max
-    height = max
-    time = max
+    unit = pixel
 }
