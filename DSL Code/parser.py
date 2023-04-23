@@ -1,5 +1,8 @@
 # trim off the end of the string when it has spaces
 # skip lines that have //
+import re
+from matplotlib import colors
+
 def parser(file):
     f = open(file, "r")
     parse_lines = []
@@ -21,15 +24,15 @@ def parser(file):
         comp_type = 'app.project.item(' + str(index) + ')'
     else:
         print("Error: Composition must be created first")
-    first_line = comp_name + " = " + comp_type
+    first_line = "var " + comp_name + " = " + comp_type
     script = open("shape.jsx","w")
-    script.write(first_line)
+    script.write(first_line + "\n")
     if type == "SHAPE":
-        shape_parser(parse_lines[2:])
+        script.write(shape_parser(parse_lines[2:], comp_name) + "\n")
     elif type == "EFFECT":
-        effect_parser(parse_lines[2:])
+        effect_parser(parse_lines[2:], comp_name)
 
-def shape_parser(lines):
+def shape_parser(lines, comp_name):
     name = ""
     for l in lines:
         if '{' in l and l[0] != '{':
@@ -46,13 +49,14 @@ def shape_parser(lines):
     height = "comp.height"
     unit = "comp.pixelAspect"
     time = "comp.duration"
+    function = ""
     for a in attributes:
         sides = a.split("=")
         sides[0] = sides[0].replace(" ", "")
         sides[1] = sides[1].replace(" ", "")
         if sides[0] == 'type':
-            if sides[1] != "solid":
-                type = sides[1]
+            type = sides[1]
+            function = "add" + str(sides[1]).capitalize()
         elif sides[0] == 'color' and sides[1] != "black":
             color = sides[1]
         elif sides[0] == 'width' and sides[1] != "max":
@@ -63,9 +67,14 @@ def shape_parser(lines):
             unit = sides[1]
         elif sides[0] == 'time' and sides[1] != "max":
             time = sides[1]
-    # Order: color, name, width, height, unit, 
-    parameters = [color, name, width, height, unit]
-    print(parameters)
+    # Order: color, name, width, height, unit, time
+    color = colors.to_rgba(color)
+    color = color[:3]
+    color_list = []
+    for c in color:
+        color_list.append(int(c))
+    parameters = "(" + str(color_list) + ", " + "\"" + name + "\"" + ", " + width + ", " + height + ", " + unit + ", " + time + ")"
+    return "var layer" + " = " + comp_name + ".layers." + function + parameters
 
 
 
