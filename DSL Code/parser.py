@@ -26,9 +26,9 @@ def parser(file):
         print("Error: Composition must be created first")
     first_line = "var " + comp_name + " = " + comp_type
     script = open("shape.jsx","w")
-    script.write(first_line + "\n")
+    script.write(first_line + ";" + "\n")
     if type == "SHAPE":
-        script.write(shape_parser(parse_lines[2:], comp_name) + "\n")
+        script.write(shape_parser(parse_lines[2:], comp_name) + ";" + "\n")
     elif type == "EFFECT":
         effect_parser(parse_lines[2:], comp_name)
 
