@@ -11,7 +11,7 @@ def effect_parser(script, lines):
     effect_cate = effect_des[1]
     effect_cate = effect_cate[:len(effect_cate)-1]
     effect_cate = effect_cate.strip()
-    script.write("var layer = layer.property(\"" + str(effect_cate) + "\").addProperty(\"" + str(effect_name) + "\")" + ";" + "\n")
+    script.write("var effect = layer.property(\"" + str(effect_cate) + "\").addProperty(\"" + str(effect_name) + "\")" + ";" + "\n")
     #script.close()
     value = ""
     for p in properties:
