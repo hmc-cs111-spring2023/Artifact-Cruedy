@@ -1,0 +1,8 @@
+EFFECT
+comp = current_comp()
+
+layer = current_layer()
+
+ADBE Gaussian Blur 2 from ADBE Effect Parade{
+    blur = 20
+}

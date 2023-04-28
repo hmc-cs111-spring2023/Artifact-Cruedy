@@ -1,7 +1,7 @@
 import re
 from matplotlib import colors
 
-def shape_parser(lines, comp_name):
+def shape_parser(script, lines):
     name = ""
     for l in lines:
         if '{' in l and l[0] != '{':
@@ -44,4 +44,5 @@ def shape_parser(lines, comp_name):
     for c in color:
         color_list.append(int(c))
     parameters = "(" + str(color_list) + ", " + "\"" + name + "\"" + ", " + width + ", " + height + ", " + unit + ", " + time + ")"
-    return "var layer" + " = " + comp_name + ".layers." + function + parameters, lines
+    script.write("var layer" + " = " + "comp.layers." + function + parameters + ";" + "\n")
+    return lines

@@ -1,0 +1,20 @@
+SHAPE
+comp = "My Composition" {
+    width = 1920
+    height = 1080
+    pixel = 1.0
+    duration = 10
+    frameRate = 30
+}
+
+"My Solid" {
+    type = solid
+    color = yellow
+    unit = pixel
+}
+
+EFFECT
+
+ADBE Gaussian Blur 2 from ADBE Effect Parade{
+    blur = 20
+}

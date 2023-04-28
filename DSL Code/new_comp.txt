@@ -1,9 +1,0 @@
-EFFECT
-
-comp = "My Composition" {
-    width = 1920
-    height = 1080
-    pixel = 1.0
-    duration = 10
-    frameRate = 30
-}
