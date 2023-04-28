@@ -30,4 +30,4 @@ def parser(input_file, output_file):
             print("Must specify type correctly")
     script.close()
 
-parser("files/preLayer_effect.txt", "files/preLayer_effect.jsx")
+parser("files/solid.txt", "files/solidjsx")
