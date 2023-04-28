@@ -1,7 +1,7 @@
 def effect_parser(script, lines):
     if "current_layer" in lines[0]:
         script.write("var layer = comp.selectedLayers[0];" + "\n")
-    lines = lines[1:]
+        lines = lines[1:]
     effect_des = lines[0].split("from")
     i = lines.index("}")
     properties = lines[1:i]
