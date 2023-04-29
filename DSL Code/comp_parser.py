@@ -28,6 +28,7 @@ def comp_parser(lines):
         index = comp_type[len(comp_type)-2:-1]
         comp_type = 'app.project.item(' + str(index) + ')'
     elif '\"' in comp_name:
+        # default values
         width = "1920"
         height = "1080"
         pixel = "1.0"

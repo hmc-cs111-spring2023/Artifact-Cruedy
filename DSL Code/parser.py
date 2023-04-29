@@ -24,6 +24,7 @@ def parser(input_file, output_file):
         if parse_lines[0] == "EFFECT" or parse_lines[0] == "SHAPE":
             type = parse_lines[0]
             parse_lines = parse_lines[1:]
+        # either parses a shape or an effect
         if type == "SHAPE":
             parse_lines = shape_parser(script, parse_lines)
         elif type == "EFFECT":
@@ -32,5 +33,5 @@ def parser(input_file, output_file):
             print("Must specify type correctly")
     script.close()
 
-
+# running the program
 parser("files/solid.txt", "files/solid.jsx")

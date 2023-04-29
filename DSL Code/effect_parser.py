@@ -2,6 +2,7 @@ def effect_parser(script, lines):
     if "current_layer" in lines[0]:
         script.write("var layer = comp.selectedLayers[0];" + "\n")
         lines = lines[1:]
+    # splits the name of the effect from the folder its from
     effect_des = lines[0].split("from")
     i = lines.index("}")
     properties = lines[1:i]
@@ -12,7 +13,6 @@ def effect_parser(script, lines):
     effect_cate = effect_cate[:len(effect_cate)-1]
     effect_cate = effect_cate.strip()
     script.write("var effect = layer.property(\"" + str(effect_cate) + "\").addProperty(\"" + str(effect_name) + "\")" + ";" + "\n")
-    #script.close()
     value = ""
     for p in properties:
         attr = p.split("=")
