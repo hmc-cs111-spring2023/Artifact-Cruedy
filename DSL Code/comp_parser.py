@@ -4,6 +4,7 @@ def comp_parser(lines):
     comp_name = ''
     comp_type = ''
     new = True
+    # checks if it selects an already existing composition
     for l in lines:
         if 'different_comp' in l or 'current_comp' in l:
             new = False

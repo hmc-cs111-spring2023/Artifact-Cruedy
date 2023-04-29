@@ -7,6 +7,7 @@ from effect_parser import *
 def parser(input_file, output_file):
     f = open(input_file, "r")
     parse_lines = []
+    # removes extra space and characters from the lines of the input file
     for l in f:
         s = str(l)
         if '\n' in s:
@@ -18,6 +19,7 @@ def parser(input_file, output_file):
     comp_line, parse_lines = comp_parser(parse_lines[1:])
     first_line = "var " + comp_line
     script.write(first_line + ";" + "\n")
+    # parses through the lines that creates solids/effects
     while parse_lines != []:
         if parse_lines[0] == "EFFECT" or parse_lines[0] == "SHAPE":
             type = parse_lines[0]
@@ -29,5 +31,6 @@ def parser(input_file, output_file):
         else:
             print("Must specify type correctly")
     script.close()
+
 
 parser("files/solid.txt", "files/solid.jsx")

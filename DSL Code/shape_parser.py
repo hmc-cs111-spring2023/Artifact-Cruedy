@@ -1,4 +1,3 @@
-import re
 from matplotlib import colors
 
 def shape_parser(script, lines):
